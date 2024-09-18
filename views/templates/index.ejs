@@ -17,7 +17,7 @@
             <div class="form-row">
                 <div class="form-group col-md-4">
                     <label for="department">Departamento:</label>
-                    <select id="department" name="department" class="form-control" onchange="updateMunicipalities()">
+                    <select id="department" name="department" class="form-control" >
                         <% departments.forEach(department => { %>
                             <option value="<%= department.code %>"><%= department.name %></option>
                         <% }); %>
@@ -25,7 +25,11 @@
                 </div>
                 <div class="form-group col-md-4">
                     <label for="municipality">Municipio:</label>
-                    <select id="municipality" name="municipality" class="form-control"></select>
+                    <select id="municipality" name="municipality" class="form-control">
+                        <% departments.forEach(municipality=> { %>
+                            <option value="<%= municipality.code %>"><%= municipality.name %></option>
+                        <% }); %>
+                    </select>
                 </div>
                 <div class="form-group col-md-4">
                     <label for="objeto">Persona:</label>
