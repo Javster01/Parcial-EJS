@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parcial</title>
+    <!-- Incluir Bootstrap desde CDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/style.css">
+    <script src="/public/script.js"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Parcial EJS-Electiva 2</h1>
+        <!-- Formulario -->
+        <form action="/add" method="POST" class="mb-4">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="department">Departamento:</label>
+                    <select id="department" name="department" class="form-control" onchange="updateMunicipalities()">
+                        <% departments.forEach(department => { %>
+                            <option value="<%= department.code %>"><%= department.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="municipality">Municipio:</label>
+                    <select id="municipality" name="municipality" class="form-control"></select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="objeto">Persona:</label>
+                    <input type="text" id="objeto" name="objeto" class="form-control" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+
+        <!-- Tabla de Registros Agregados -->
+        <h2 class="mb-3">Registros Agregados</h2>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Departamento</th>
+                    <th scope="col">Municipio</th>
+                    <th scope="col">Persona</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% records.forEach(record => { %>
+                    <tr>
+                        <td>
+                            <% const department = departments.find(dep => dep.code === record.department); %>
+                            <%= department ? department.name : 'Desconocido' %>
+                        </td>
+                        <td><%= record.municipality %></td>
+                        <td><%= record.objeto %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+        <!-- Tabla de Todos los Municipios Disponibles -->
+        <h2 class="mb-3">Todos los Municipios Disponibles</h2>
+        <table class="table table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Departamento</th>
+                    <th scope="col">Municipio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% towns.forEach(town => { %>
+                    <tr>
+                        <td>
+                            <% const department = departments.find(dep => dep.code === town.department); %>
+                            <%= department ? department.name : 'Desconocido' %>
+                        </td>
+                        <td><%= town.name %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Incluir scripts de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
