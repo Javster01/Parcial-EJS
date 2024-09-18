@@ -2,7 +2,8 @@
 
 ## Descripción
 
-Esta aplicación web permite gestionar registros de personas asociadas a un departamento y un municipio específico. Los departamentos y municipios se cargan dinámicamente desde archivos JSON. También puedes cambiar las rutas de los archivos JSON para cargar nuevos datos sin modificar el código base.
+Esta aplicación web permite gestionar registros de personas asociadas a un departamento y un municipio específico. 
+Los departamentos y municipios se cargan dinámicamente desde archivos JSON. 
 
 ## Autor
 - **Nombre**: Javier Ortiz
